@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.tbl_clientes.model.entities.Posto;
-import com.example.tbl_clientes.model.repository.PostoRepository;
 import com.example.tbl_clientes.model.services.PostoService;
 
 @RestController
@@ -25,9 +24,9 @@ public class PostoController {
         return service.findAllPostos();
     }
 
-    @GetMapping(path = "/like/{idCnpj}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Posto> findAllLike(@PathVariable String idCnpj) {
-        return service.findAllByIdOrCnpj(idCnpj);
+    @GetMapping(path = "/like/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Posto findAllLike(@PathVariable Long id) {
+        return service.findAllByIdOrCnpj(id);
     }
 
 }
