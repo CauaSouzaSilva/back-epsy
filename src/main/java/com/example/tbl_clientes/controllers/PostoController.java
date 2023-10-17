@@ -25,7 +25,7 @@ public class PostoController {
     }
 
     @GetMapping(path = "/like/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Posto findAllLike(@PathVariable String id) {
+    public List<Posto> findAllLike(@PathVariable String id) {
         return service.findAllByIdOrCnpj(id);
     }
 
