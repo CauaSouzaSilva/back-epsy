@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
+import com.example.tbl_clientes.exceptions.ObjectNullException;
 import com.example.tbl_clientes.exceptions.ResourceNotFoundException;
 
 @ControllerAdvice
@@ -27,5 +28,12 @@ public class CustomizedExceptionHandler {
         ExceptionResponse response = new ExceptionResponse(
                 new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+    
+    @ExceptionHandler(ObjectNullException.class)
+    public final ResponseEntity<ExceptionResponse> handleBadRequest(Exception ex, WebRequest request) {
+        ExceptionResponse response = new ExceptionResponse(
+                new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }

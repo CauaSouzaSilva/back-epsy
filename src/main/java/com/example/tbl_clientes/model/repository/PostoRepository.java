@@ -13,4 +13,7 @@ public interface PostoRepository extends JpaRepository<Posto, Long> {
 
     @Query("SELECT p FROM Posto p WHERE p.nomePosto LIKE :nome")
     List<Posto> findAllLikeName(@Param("nome")String nome, Pageable pageable);
+
+    @Query("SELECT p FROM Posto p WHERE p.cnpjPosto LIKE :cnpj")
+    List<Posto> findAllLikeCnpj(@Param("cnpj") String cnpj, Pageable pageable);
 }

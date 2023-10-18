@@ -36,4 +36,9 @@ public class Posto {
 
     @OneToMany(mappedBy = "posto", targetEntity = Anydesk.class)
     private List<Anydesk> anydesks;
+
+    public Posto(String nomePosto, String cnpjPosto) {
+        this.nomePosto = nomePosto;
+        this.cnpjPosto = cnpjPosto;
+    }
 }
